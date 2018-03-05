@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class EnemySpawn : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class EnemySpawn : MonoBehaviour
 
     private float __countdown = 2f;
     private int __waveIndex = 1;
+    private float __waitTime = 0.5f;
 
 	void Start ()
     {
@@ -18,7 +20,7 @@ public class EnemySpawn : MonoBehaviour
     {
 		if (__countdown <= 0f)
         {
-            SpawnWave();
+            StartCoroutine(SpawnWave());
 
             __countdown = _timeBetweenWaves;
         }
@@ -26,14 +28,16 @@ public class EnemySpawn : MonoBehaviour
         __countdown -= Time.deltaTime;
 	}
 
-    void SpawnWave()
+    IEnumerator SpawnWave()
     {
         for (int i = 0; i < __waveIndex; i++)
         {
             SpawnEnemy();
+
+            yield return new WaitForSeconds(__waitTime);
         }
 
-        //__waveIndex++;
+        __waveIndex++;
     }
 
     void SpawnEnemy()
