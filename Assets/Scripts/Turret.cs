@@ -5,7 +5,7 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     public float _range = 15f;
-    public float _updatePeriod = 0.5f;
+    public float _updatePeriod = 0.2f;
     public Transform _rotate;
     public float _rotationSpeed = 6f;
 
