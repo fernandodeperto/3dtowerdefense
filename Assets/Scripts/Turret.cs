@@ -7,6 +7,7 @@ public class Turret : MonoBehaviour
     public float _range = 15f;
     public float _updatePeriod = 0.5f;
     public Transform _rotate;
+    public float _rotationSpeed = 6f;
 
     private Transform __target;
 
@@ -24,7 +25,7 @@ public class Turret : MonoBehaviour
 
         Vector3 direction = __target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
-        Vector3 rotation = lookRotation.eulerAngles;
+        Vector3 rotation = Quaternion.Lerp(_rotate.rotation, lookRotation, Time.deltaTime * _rotationSpeed).eulerAngles;
         _rotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 	}
 
