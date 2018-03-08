@@ -2028,7 +2028,7 @@ GameObject:
   - component: {fileID: 318677026}
   - component: {fileID: 318677025}
   m_Layer: 0
-  m_Name: Game Manager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9018,7 +9018,7 @@ GameObject:
   - component: {fileID: 1474961150}
   - component: {fileID: 1474961153}
   m_Layer: 0
-  m_Name: Ground Plane
+  m_Name: GroundPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12184,7 +12184,7 @@ GameObject:
   - component: {fileID: 1923364076}
   - component: {fileID: 1923364075}
   m_Layer: 5
-  m_Name: Wave Timer
+  m_Name: WaveTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
