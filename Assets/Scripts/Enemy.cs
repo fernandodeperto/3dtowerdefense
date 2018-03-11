@@ -30,10 +30,9 @@ public class Enemy : MonoBehaviour
         if (__waypointIndex >= Waypoints._points.Length - 1)
         {
             Destroy(gameObject);
+            return;
         }
-        else
-        {
-            __target = Waypoints._points[++__waypointIndex];
-        }
+
+        __target = Waypoints._points[++__waypointIndex];
     }
 }

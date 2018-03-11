@@ -25,10 +25,17 @@ public class Node : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (!EventSystem.current.IsPointerOverGameObject() && __buildManager.GetSelectedTurret() != null)
+        if (EventSystem.current.IsPointerOverGameObject())
         {
-            __renderer.material.color = _hoverColor;
+            return;
         }
+
+        if (__buildManager.GetSelectedTurret() == null)
+        {
+            return;
+        }
+
+        __renderer.material.color = _hoverColor;
     }
 
     private void OnMouseExit()
@@ -38,15 +45,22 @@ public class Node : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (__buildManager.GetSelectedTurret() == null || EventSystem.current.IsPointerOverGameObject())
+        if (EventSystem.current.IsPointerOverGameObject())
         {
             return;
         }
 
-        if (__turret == null)
+        if (__buildManager.GetSelectedTurret() == null)
         {
-            GameObject selectedTurret = BuildManager._instance.GetSelectedTurret();
-            __turret = (GameObject) Instantiate(selectedTurret, transform.position + _positionOffset, transform.rotation);
+            return;
         }
+
+        if (__turret != null)
+        {
+            return;
+        }
+
+        GameObject selectedTurret = BuildManager._instance.GetSelectedTurret();
+        __turret = (GameObject) Instantiate(selectedTurret, transform.position + _positionOffset, transform.rotation);
     }
 }

@@ -12,7 +12,7 @@ public class BuildManager : MonoBehaviour {
     {
         if (_instance != null)
         {
-            Debug.Log("build manager already exists");
+            Destroy(gameObject);
         }
         else
         {

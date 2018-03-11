@@ -8,29 +8,25 @@ public class Bullet : MonoBehaviour {
     private Transform __target;
 
 	void Start () {
-		
 	}
 	
 	void Update () {
 		if (__target == null)
         {
             Destroy(gameObject);
+            return;
         }
-        else
+
+        Vector3 direction = __target.position - transform.position;
+        float moveDistance = _speed * Time.deltaTime;
+
+        if (direction.magnitude <= moveDistance)
         {
-            Vector3 direction = __target.position - transform.position;
-            float moveDistance = _speed * Time.deltaTime;
-
-            if (direction.magnitude <= moveDistance)
-            {
-                HitTarget();
-            }
-            else
-            {
-                transform.Translate(direction.normalized * moveDistance, Space.World);
-            }
+            HitTarget();
+            return;
         }
 
+        transform.Translate(direction.normalized * moveDistance, Space.World);
 	}
 
     public void SetTarget(Transform target)

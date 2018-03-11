@@ -3247,7 +3247,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 873929e5d6e39274fafb1319520b602e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _standardTurret: {fileID: 1968132314063158, guid: 4791e5db580273b4482a68946c691a86,
+  _standardTurretPrefab: {fileID: 1968132314063158, guid: 4791e5db580273b4482a68946c691a86,
+    type: 2}
+  _missileLauncherPrefab: {fileID: 1968132314063158, guid: 4791e5db580273b4482a68946c691a86,
+    type: 2}
+  _laserBeamerPrefab: {fileID: 1968132314063158, guid: 4791e5db580273b4482a68946c691a86,
     type: 2}
 --- !u!1001 &1485096159
 Prefab:
