@@ -2,7 +2,9 @@
 
 public class BuildManager : MonoBehaviour {
     public static BuildManager _instance;
-    public GameObject _standardTurret;
+    public GameObject _standardTurretPrefab;
+    public GameObject _missileLauncherPrefab;
+    public GameObject _laserBeamerPrefab;
 
     private GameObject __selectedTurret;
 
@@ -20,11 +22,15 @@ public class BuildManager : MonoBehaviour {
 
     void Start()
     {
-        __selectedTurret = _standardTurret;
     }
 
     public GameObject GetSelectedTurret()
     {
         return __selectedTurret;
+    }
+
+    public void SetSelectedTurret(GameObject turret)
+    {
+        __selectedTurret = turret;
     }
 }

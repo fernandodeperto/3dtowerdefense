@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Node : MonoBehaviour
 {
@@ -8,11 +9,13 @@ public class Node : MonoBehaviour
     private Renderer __renderer;
     private Color __originalColor;
     private GameObject __turret;
+    private BuildManager __buildManager;
 
 	void Start()
     {
         __renderer = GetComponent<Renderer>();
         __originalColor = __renderer.material.color;
+        __buildManager = BuildManager._instance;
 	}
 	
 	void Update()
@@ -22,7 +25,10 @@ public class Node : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        __renderer.material.color = _hoverColor;
+        if (!EventSystem.current.IsPointerOverGameObject() && __buildManager.GetSelectedTurret() != null)
+        {
+            __renderer.material.color = _hoverColor;
+        }
     }
 
     private void OnMouseExit()
@@ -32,11 +38,12 @@ public class Node : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (__turret != null)
+        if (__buildManager.GetSelectedTurret() == null || EventSystem.current.IsPointerOverGameObject())
         {
-            Debug.Log("got tower");
+            return;
         }
-        else
+
+        if (__turret == null)
         {
             GameObject selectedTurret = BuildManager._instance.GetSelectedTurret();
             __turret = (GameObject) Instantiate(selectedTurret, transform.position + _positionOffset, transform.rotation);
