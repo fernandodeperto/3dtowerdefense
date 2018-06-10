@@ -30,6 +30,12 @@ public class GameManager : MonoBehaviour {
     {
         _goldCountText.text = _goldCount.ToString();
         _lifeCountText.text = _lifeCount.ToString();
+
+        if (_lifeCount <= 0)
+        {
+            EnemySpawn enemySpawn = transform.GetComponent<EnemySpawn>();
+            enemySpawn.enabled = false;
+        }
     }
 
     public GameObject GetSelectedTurret()
