@@ -37,7 +37,7 @@ public class Bullet : MonoBehaviour {
     void HitTarget()
     {
         Enemy enemy = __target.GetComponent<Enemy>();
-        BuildManager._instance._goldCount += enemy._goldBounty;
+        GameManager._instance._goldCount += enemy._goldBounty;
 
         GameObject effectGameObject = Instantiate(_bulletImpact, transform.position, transform.rotation);
 

@@ -11,6 +11,7 @@ public class Turret : MonoBehaviour
     public float _fireRate = 1f;
     public GameObject _bulletPrefab;
     public Transform _firePoint;
+    public int _goldCost = 10;
 
     private GameObject __target;
     private float __fireCountdown = 0f;

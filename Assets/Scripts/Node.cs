@@ -9,13 +9,13 @@ public class Node : MonoBehaviour
     private Renderer __renderer;
     private Color __originalColor;
     private GameObject __turret;
-    private BuildManager __buildManager;
+    private GameManager __gameManager;
 
 	void Start()
     {
         __renderer = GetComponent<Renderer>();
         __originalColor = __renderer.material.color;
-        __buildManager = BuildManager._instance;
+        __gameManager = GameManager._instance;
 	}
 	
 	void Update()
@@ -30,7 +30,7 @@ public class Node : MonoBehaviour
             return;
         }
 
-        if (__buildManager.GetSelectedTurret() == null)
+        if (__gameManager.GetSelectedTurret() == null)
         {
             return;
         }
@@ -50,7 +50,7 @@ public class Node : MonoBehaviour
             return;
         }
 
-        if (__buildManager.GetSelectedTurret() == null)
+        if (__gameManager.GetSelectedTurret() == null)
         {
             return;
         }
@@ -60,7 +60,16 @@ public class Node : MonoBehaviour
             return;
         }
 
-        GameObject selectedTurret = BuildManager._instance.GetSelectedTurret();
+        GameObject selectedTurret = GameManager._instance.GetSelectedTurret();
+        Turret turret = selectedTurret.GetComponent<Turret>();
+
+        if (GameManager._instance._goldCount < turret._goldCost)
+        {
+            return;
+        }
+
+        GameManager._instance._goldCount -= turret._goldCost;
+        
         __turret = (GameObject) Instantiate(selectedTurret, transform.position + _positionOffset, transform.rotation);
     }
 }

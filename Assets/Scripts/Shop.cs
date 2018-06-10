@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
 public class Shop : MonoBehaviour {
-    private BuildManager __buildManager;
+    private GameManager __gameManager;
 
 	void Start () {
-        __buildManager = BuildManager._instance;
+        __gameManager = GameManager._instance;
 	}
 	
 	void Update () {
@@ -13,16 +13,6 @@ public class Shop : MonoBehaviour {
 
     public void PurchaseStandardTurret()
     {
-        __buildManager.SetSelectedTurret(__buildManager._standardTurretPrefab);
-    }
-
-    public void PurchaseMissileLauncher()
-    {
-        __buildManager.SetSelectedTurret(__buildManager._missileLauncherPrefab);
-    }
-
-    public void PurchaseLaserBeamer()
-    {
-        __buildManager.SetSelectedTurret(__buildManager._laserBeamerPrefab);
+        __gameManager.SetSelectedTurret(__gameManager._standardTurretPrefab);
     }
 }

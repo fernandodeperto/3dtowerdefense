@@ -4,6 +4,7 @@ public class Enemy : MonoBehaviour
 {
     public float _speed = 10f;
     public int _goldBounty = 10;
+    public int _lifePenalty = 1;
 
     private Transform __target;
     private int __waypointIndex = 0;
@@ -30,6 +31,8 @@ public class Enemy : MonoBehaviour
     {
         if (__waypointIndex >= Waypoints._points.Length - 1)
         {
+            GameManager._instance._lifeCount -= _lifePenalty;
+
             Destroy(gameObject);
             return;
         }
