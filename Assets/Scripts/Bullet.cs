@@ -5,7 +5,7 @@ public class Bullet : MonoBehaviour {
     public GameObject _bulletImpact;
     private float __effectDuration = 2f;
 
-    private Transform __target;
+    private GameObject __target;
 
 	void Start () {
 	}
@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour {
             return;
         }
 
-        Vector3 direction = __target.position - transform.position;
+        Vector3 direction = __target.transform.position - transform.position;
         float moveDistance = _speed * Time.deltaTime;
 
         if (direction.magnitude <= moveDistance)
@@ -29,13 +29,16 @@ public class Bullet : MonoBehaviour {
         transform.Translate(direction.normalized * moveDistance, Space.World);
 	}
 
-    public void SetTarget(Transform target)
+    public void SetTarget(GameObject target)
     {
         __target = target;
     }
 
     void HitTarget()
     {
+        Enemy enemy = __target.GetComponent<Enemy>();
+        BuildManager._instance._goldCount += enemy._goldBounty;
+
         GameObject effectGameObject = Instantiate(_bulletImpact, transform.position, transform.rotation);
 
         Destroy(effectGameObject, __effectDuration);

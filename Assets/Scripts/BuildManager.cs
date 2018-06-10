@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class BuildManager : MonoBehaviour {
     public static BuildManager _instance;
     public GameObject _standardTurretPrefab;
     public GameObject _missileLauncherPrefab;
     public GameObject _laserBeamerPrefab;
+
+    public Text _goldCountText;
+    public int _goldCount = 10;
 
     private GameObject __selectedTurret;
 
@@ -20,8 +24,9 @@ public class BuildManager : MonoBehaviour {
         }
     }
 
-    void Start()
+    void Update()
     {
+        _goldCountText.text = _goldCount.ToString();
     }
 
     public GameObject GetSelectedTurret()

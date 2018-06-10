@@ -12,7 +12,7 @@ public class Turret : MonoBehaviour
     public GameObject _bulletPrefab;
     public Transform _firePoint;
 
-    private Transform __target;
+    private GameObject __target;
     private float __fireCountdown = 0f;
 
 	void Start()
@@ -27,7 +27,7 @@ public class Turret : MonoBehaviour
             return;
         }
 
-        Vector3 direction = __target.position - transform.position;
+        Vector3 direction = __target.transform.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         Vector3 rotation = Quaternion.Lerp(_rotate.rotation, lookRotation, Time.deltaTime * _rotationSpeed).eulerAngles;
         _rotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
@@ -62,7 +62,7 @@ public class Turret : MonoBehaviour
 
         if (closestEnemy != null && shortestDistance <= _range)
         {
-            __target = closestEnemy.transform;
+            __target = closestEnemy;
         }
         else
         {

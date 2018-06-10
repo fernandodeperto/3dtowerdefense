@@ -3,6 +3,7 @@
 public class Enemy : MonoBehaviour
 {
     public float _speed = 10f;
+    public int _goldBounty = 10;
 
     private Transform __target;
     private int __waypointIndex = 0;
