@@ -18,7 +18,7 @@ public class EnemySpawn : MonoBehaviour
 		if (__countdown <= Mathf.Epsilon)
         {
             StartCoroutine(SpawnWave());
-            __countdown = _timeBetweenWaves;
+            __countdown = _timeBetweenWaves + __waitTime * __waveIndex;
         }
 
         _waveCountDownText.text = Mathf.Floor(__countdown).ToString();
